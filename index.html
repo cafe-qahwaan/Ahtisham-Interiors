@@ -1,396 +1,489 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ahtisham Interiors — Curtains, Blinds & Upholstery in Rawalpindi</title>
-  <meta name="description" content="Premium curtains, blinds, wallpapers & upholstery. Free on-site measurement in Rawalpindi & Islamabad.">
-  <link rel="stylesheet" href="assets/site.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahtisham Interiors — Curtains, Blinds, Upholstery & Wallpapers</title>
+  <meta name="description" content="Premium curtains, blinds, wallpapers & upholstery in Rawalpindi & Islamabad. Free on-site measurement, tailor-made stitching and fast installation." />
+  <link rel="stylesheet" href="assets/site.css" />
 
-  <!-- Page-specific enhancements -->
+  <!-- Page-specific enhancements (keeps the rest of your site intact) -->
   <style>
     :root{
-      --ink:#0f172a;       /* deep navy text */
-      --accent:#e07a15;    /* modern orange */
-      --accent-2:#0e7490;  /* teal accent */
-      --muted:#64748b;
-      --card:#ffffff;
-      --bg:#f7f8fb;
-      --ring:rgba(0,0,0,.08);
-      --radius:16px;
+      --ink:#0f172a;          /* deep navy text */
+      --muted:#64748b;        /* slate */
+      --brand:#e07a15;        /* orange */
+      --brand-dark:#b86110;
+      --accent:#0ea5e9;       /* blue accent */
+      --teal:#14b8a6;         /* teal accent */
+      --bg:#f6f7fb;           /* page background */
+      --card:#ffffff;         /* card background */
+      --ring:rgba(2,8,23,.06);
+      --radius:18px;
     }
-    body{background:var(--bg);color:var(--ink);}
-    /* HEADER / NAV */
-    .topbar{background:#fff;border-bottom:1px solid #e5e7eb;}
-    .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px;margin:0 auto;padding:10px 16px;}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-    .brand-logo{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid #e5e7eb;display:grid;place-items:center;font-weight:800;color:var(--accent);}
-    .brand-name{font-weight:800;font-size:18px;color:var(--ink);}
-    .topnav a{color:var(--ink);text-decoration:none;margin-left:14px;font-weight:600}
-    .topnav a:hover{color:var(--accent)}
-    .orangebar{background:var(--accent);color:#fff;}
-    .orangebar .row{max-width:1180px;margin:0 auto;padding:8px 16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .orangebar a{color:#fff;text-decoration:none;background:rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;font-weight:600}
-    .orangebar .right{margin-left:auto;display:flex;gap:10px;align-items:center}
-    .pill{background:#fff;color:#111;padding:6px 10px;border-radius:999px;font-weight:700}
 
-    /* HERO SLIDER */
-    .hero{position:relative;overflow:hidden;background:#000}
-    .slides{display:flex;transition:transform .6s ease;touch-action:pan-y;}
-    .slide{min-width:100vw;position:relative;height:58vh;max-height:680px}
-    .slide img{width:100%;height:100%;object-fit:cover;opacity:.85}
-    .slide .caption{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;background:rgba(0,0,0,.35);padding:18px 22px;border-radius:16px;backdrop-filter:blur(2px)}
-    .caption h1{font-size:clamp(24px,3.6vw,46px);margin:0 0 6px}
-    .caption p{margin:0 0 12px;color:#e2e8f0}
-    .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
-    .btn.alt{background:var(--accent-2)}
-    .hero-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:8px;justify-content:center}
-    .hero-dots button{width:8px;height:8px;border-radius:999px;border:none;background:#fff;opacity:.5}
-    .hero-dots button.active{opacity:1}
+    /* Global page tweaks */
+    body{ background:var(--bg); color:var(--ink); }
+    .container{ max-width:1180px; margin:0 auto; padding:0 16px; }
+    .heavy{ font-weight:900; letter-spacing:-.02em; }
+    .muted{ color:var(--muted); }
+    .center{ text-align:center; }
+    .btn{ display:inline-block; background:var(--brand); color:#fff; text-decoration:none; padding:10px 16px; border-radius:12px; font-weight:800; }
+    .btn:hover{ background:var(--brand-dark); }
+    .btn.alt{ background:var(--teal); }
+    .btn.ghost{ background:#fff; color:var(--ink); border:1px solid #e5e7eb; }
+    .pill{ background:#fff; color:#111; padding:6px 10px; border-radius:999px; font-weight:800; }
 
-    /* SECTION WRAPPER */
-    .section{max-width:1180px;margin:0 auto;padding:28px 16px}
-    .section h2{font-size:clamp(22px,3vw,34px);margin:0 0 14px}
-    .muted{color:var(--muted)}
+    /* Topbars */
+    .topbar{ background:#fff; border-bottom:1px solid #e5e7eb; }
+    .topbar .row{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand{ display:flex; align-items:center; gap:10px; padding:10px 0; text-decoration:none; }
+    .brand-badge{ width:42px; height:42px; border-radius:12px; display:grid; place-items:center; color:var(--brand); border:1px solid #e5e7eb; font-weight:900; }
+    .brand-name{ font-weight:900; letter-spacing:-.01em; color:var(--ink); }
+    .topnav a{ color:var(--ink); text-decoration:none; margin-left:14px; font-weight:700; }
+    .topnav a:hover{ color:var(--brand); }
+    .orangebar{ background:var(--brand); color:#fff; }
+    .orangebar .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .orangebar a{ color:#fff; text-decoration:none; background:rgba(255,255,255,.18); padding:6px 10px; border-radius:999px; font-weight:700; }
+    .orangebar .right{ margin-left:auto; display:flex; gap:10px; align-items:center; }
 
-    /* CATEGORIES */
-    .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .cat{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid #e5e7eb;position:relative}
-    .cat img{width:100%;height:160px;object-fit:cover}
-    .cat .label{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;padding:8px 10px;border-radius:999px;font-weight:700}
+    /* Hero slider */
+    .hero{ position:relative; overflow:hidden; background:#000; }
+    .slides{ display:flex; transition:transform .6s ease; touch-action:pan-y; }
+    .slide{ min-width:100vw; position:relative; height:58vh; max-height:680px; }
+    .slide img{ width:100%; height:100%; object-fit:cover; opacity:.86; }
+    .caption{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; color:#fff; background:rgba(0,0,0,.35); padding:18px 22px; border-radius:16px; backdrop-filter:blur(2px); }
+    .caption h1{ font-size:clamp(24px,3.5vw,46px); margin:0 0 8px; }
+    .caption p{ margin:0 0 12px; color:#e2e8f0; }
+    .hero-dots{ position:absolute; left:0; right:0; bottom:10px; display:flex; gap:8px; justify-content:center; }
+    .hero-dots button{ width:8px; height:8px; border-radius:999px; border:none; background:#fff; opacity:.5; }
+    .hero-dots button.active{ opacity:1; }
 
-    /* PRODUCTS */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px var(--ring)}
-    .card img{width:100%;height:190px;object-fit:cover}
-    .card .content{padding:12px;display:flex;flex-direction:column;gap:8px}
-    .price{font-weight:800}
-    .old{color:#94a3b8;text-decoration:line-through;margin-left:8px}
-    .sale{position:absolute;right:10px;top:10px;background:#10b981;color:#fff;font-weight:700;padding:4px 8px;border-radius:999px;font-size:12px}
+    /* Sections */
+    .section{ padding:28px 0; }
+    .section h2{ font-size:clamp(22px,3vw,34px); margin:0 0 10px; }
+    .lead{ font-size:clamp(14px,1.8vw,18px); }
 
-    /* VALUE PROPS */
-    .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .value{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;box-shadow:0 8px 22px var(--ring)}
-    .value h3{margin:0 0 6px}
+    /* Categories */
+    .cat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    .cat{ position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid #e5e7eb; background:#000; }
+    .cat img{ width:100%; height:160px; object-fit:cover; opacity:.88; transition:transform .22s ease; }
+    .cat:hover img{ transform:scale(1.03); }
+    .cat .label{ position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,.6); color:#fff; padding:8px 10px; border-radius:999px; font-weight:800; }
 
-    /* HOW IT WORKS */
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-    .step{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px}
+    /* Cards / grids */
+    .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .card{ background:var(--card); border:1px solid #e5e7eb; border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; box-shadow:0 14px 30px var(--ring); }
+    .card img{ width:100%; height:190px; object-fit:cover; }
+    .card .content{ padding:12px; display:flex; flex-direction:column; gap:8px; }
+    .price{ font-weight:900; }
+    .old{ color:#94a3b8; text-decoration:line-through; margin-left:8px; }
+    .sale{ position:absolute; right:10px; top:10px; background:#10b981; color:#fff; font-weight:900; padding:4px 8px; border-radius:999px; font-size:12px; }
 
-    /* TESTIMONIALS */
-    .t-wrap{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:16px;position:relative;overflow:hidden}
-    .t-rail{display:flex;gap:14px;transition:transform .5s ease}
-    .t-card{min-width:320px;max-width:320px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:14px}
-    .t-name{font-weight:800;margin-top:8px}
+    /* Value props */
+    .v-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+    .v-card{ background:linear-gradient(180deg,#fff,#f9fafb); border:1px solid #e5e7eb; border-radius:var(--radius); padding:18px; box-shadow:0 14px 30px var(--ring); transition:transform .18s ease, box-shadow .18s ease; text-align:center; }
+    .v-card:hover{ transform:translateY(-4px); box-shadow:0 18px 38px rgba(2,8,23,.10); }
+    .v-icon{ width:58px; height:58px; border-radius:14px; display:grid; place-items:center; font-size:28px; margin:0 auto 10px; background:linear-gradient(135deg,#fde68a,#fb923c); box-shadow:0 10px 20px rgba(251,146,60,.30); }
 
-    /* GALLERY */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-    .gallery img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+    /* Steps */
+    .steps{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .s-card{ position:relative; background:#fff; border:1px solid #e5e7eb; border-radius:var(--radius); padding:18px; box-shadow:0 14px 30px var(--ring); text-align:center; }
+    .s-badge{ position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:42px; height:42px; border-radius:999px; display:grid; place-items:center; font-weight:900; color:#0f172a; background:linear-gradient(135deg,#67e8f9,#22d3ee); box-shadow:0 10px 20px rgba(34,211,238,.35); }
 
-    /* FAQ */
-    .faq{display:grid;grid-template-columns:1fr;gap:10px}
-    .faq details{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
-    .faq summary{cursor:pointer;font-weight:800}
+    /* Testimonials */
+    .t-wrap{ background:#fff; border:1px solid #e5e7eb; border-radius:var(--radius); padding:16px; overflow:hidden; }
+    .t-rail{ display:flex; gap:14px; transition:transform .5s ease; }
+    .t-card{ min-width:320px; max-width:320px; background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:14px; }
+    .t-name{ font-weight:900; margin-top:8px; }
+
+    /* Gallery & Blog */
+    .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; }
+    .gallery img{ width:100%; height:180px; object-fit:cover; border-radius:12px; }
+    .blog-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+    .blog-card{ background:#fff; border:1px solid #e5e7eb; border-radius:var(--radius); overflow:hidden; }
+    .blog-card img{ width:100%; height:160px; object-fit:cover; }
+    .blog-card .content{ padding:12px; }
 
     /* CTA */
-    .cta{background:linear-gradient(110deg,#0ea5e9,#06b6d4);color:#fff;border-radius:16px;padding:22px;text-align:center}
-    .cta .btn{background:#111827}
+    .cta{ background:linear-gradient(110deg,#0ea5e9,#06b6d4); color:#fff; border-radius:16px; padding:22px; text-align:center; }
+    .cta .btn{ background:#111827; }
 
-    /* FOOTER */
-    .footer{background:#0b1220;color:#cbd5e1;margin-top:28px}
-    .fgrid{max-width:1180px;margin:0 auto;padding:24px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .footer a{color:#e2e8f0;text-decoration:none}
-    .copy{border-top:1px solid rgba(255,255,255,.1);padding:12px 16px;text-align:center;color:#94a3b8}
-    /* Floating WhatsApp */
-    .wa{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:999px;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:50}
-    .wa img{width:28px;height:28px;filter:invert(1)}
+    /* Footer */
+    .footer{ background:#0b1220; color:#cbd5e1; margin-top:28px; }
+    .fgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; padding:24px 0; }
+    .footer a{ color:#e2e8f0; text-decoration:none; }
+    .copy{ border-top:1px solid rgba(255,255,255,.1); padding:12px 0; text-align:center; color:#94a3b8; }
+
+    /* Reveal on scroll */
+    .reveal{ opacity:0; transform:translateY(14px); transition:opacity .35s ease, transform .35s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+    @media (max-width:520px){ .caption{ width:92%; } }
   </style>
 </head>
 <body>
 
-<!-- TOP NAV -->
-<div class="topbar">
-  <div class="row">
-    <a class="brand" href="index.html">
-      <div class="brand-logo">AI</div>
-      <div class="brand-name">Ahtisham Interiors</div>
-    </a>
-    <nav class="topnav">
-      <a href="catalog.html">Catalog</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-      <a class="pill" href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
-  </div>
-</div>
-
-<!-- ORANGE CATEGORY BAR -->
-<div class="orangebar">
-  <div class="row">
-    <a href="catalog.html#curtains">Curtains</a>
-    <a href="catalog.html#blinds">Blinds</a>
-    <a href="catalog.html#wallpapers">Wallpapers</a>
-    <a href="catalog.html#sofa">Sofa & Upholstery</a>
-    <a href="contact.html">Book Measurement</a>
-    <div class="right">
-      <span>Call: <strong>+92 313 5245829</strong></span>
+  <!-- Top nav -->
+  <div class="topbar">
+    <div class="container row" style="display:flex;align-items:center;justify-content:space-between;">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">AI</div>
+        <div class="brand-name">Ahtisham Interiors</div>
+      </a>
+      <nav class="topnav">
+        <a href="catalog.html">Catalog</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a class="pill" href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
     </div>
   </div>
-</div>
 
-<!-- HERO SLIDER -->
-<section class="hero" id="hero">
-  <div class="slides" id="slides">
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=2000" alt="Curtains living room">
-      <div class="caption">
-        <h1>Elegant Curtains & Blinds for Every Room</h1>
-        <p>Free on-site measurement in Rawalpindi & Islamabad.</p>
-        <a class="btn" href="catalog.html">Shop Now</a>
-        <a class="btn alt" href="contact.html">Book Measurement</a>
+  <!-- Orange category bar -->
+  <div class="orangebar">
+    <div class="container row">
+      <a href="catalog.html#curtains">Curtains</a>
+      <a href="catalog.html#blinds">Blinds</a>
+      <a href="catalog.html#wallpapers">Wallpapers</a>
+      <a href="catalog.html#sofa">Sofa & Upholstery</a>
+      <a href="contact.html">Book Measurement</a>
+      <div class="right">Call: <strong>+92 313 5245829</strong></div>
+    </div>
+  </div>
+
+  <!-- Hero slider -->
+  <section class="hero" id="hero">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=2000" alt="Curtains living room">
+        <div class="caption">
+          <h1 class="heavy center">Elegant Curtains & Blinds for Every Room</h1>
+          <p class="center">Free on-site measurement in Rawalpindi & Islamabad.</p>
+          <a class="btn" href="catalog.html">Shop Now</a>
+          <a class="btn alt" href="contact.html">Book Measurement</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=2000" alt="Velvet blackout">
+        <div class="caption">
+          <h1 class="heavy center">Velvet & Blackout Collections</h1>
+          <p class="center">Room-darkening comfort with premium fabrics.</p>
+          <a class="btn" href="catalog.html#blackout">Explore Blackout</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=2000" alt="Sofa upholstery">
+        <div class="caption">
+          <h1 class="heavy center">Sofas & Upholstery</h1>
+          <p class="center">Custom stitching & expert fitting by our team.</p>
+          <a class="btn" href="catalog.html#sofa">See Upholstery</a>
+        </div>
       </div>
     </div>
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=2000" alt="Velvet blackout">
-      <div class="caption">
-        <h1>Velvet & Blackout Collections</h1>
-        <p>Room-darkening comfort with premium fabrics.</p>
-        <a class="btn" href="catalog.html#blackout">Explore Blackout</a>
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+  <!-- Intro block like CurtainMart -->
+  <section class="section container center">
+    <h2 class="heavy">Pakistan’s Best Online Curtain Shop</h2>
+    <p class="lead muted">
+      We supply high-quality curtains, window blinds, wallpapers & sofa upholstery at affordable rates.
+      Order online or visit our showroom in Rawalpindi. Whether you want fancy curtains or blinds for your
+      bedroom, living room, windows, or office—our specialists measure, make and install to perfection.
+    </p>
+  </section>
+
+  <!-- Categories -->
+  <section class="section container">
+    <h2 class="heavy center">Shop by Category</h2>
+    <div class="cat-grid">
+      <a class="cat reveal" href="catalog.html#curtains">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200" alt="">
+        <span class="label">Curtains</span>
+      </a>
+      <a class="cat reveal" href="catalog.html#blinds">
+        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d5d?w=1200" alt="">
+        <span class="label">Blinds</span>
+      </a>
+      <a class="cat reveal" href="catalog.html#blackout">
+        <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=1200" alt="">
+        <span class="label">Blackout</span>
+      </a>
+      <a class="cat reveal" href="catalog.html#sheers">
+        <img src="https://images.unsplash.com/photo-1505692794403-34d4982efd4e?w=1200" alt="">
+        <span class="label">Sheers</span>
+      </a>
+      <a class="cat reveal" href="catalog.html#sofa">
+        <img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?w=1200" alt="">
+        <span class="label">Sofas & Upholstery</span>
+      </a>
+      <a class="cat reveal" href="catalog.html#wallpapers">
+        <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?w=1200" alt="">
+        <span class="label">Wallpapers</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section class="section container">
+    <h2 class="heavy center">Featured Products</h2>
+    <p class="muted center">Best-selling curtains, blinds and upholstery picked by our team.</p>
+    <div id="products-grid" class="grid"></div>
+    <div class="center" style="margin-top:10px">
+      <a class="btn alt" href="catalog.html">View All Products</a>
+    </div>
+  </section>
+
+  <!-- Limited Sale Offer (same grid, highlights items on sale) -->
+  <section class="section container">
+    <h2 class="heavy center">Limited Sale Offer</h2>
+    <p class="muted center">Grab seasonal discounts on selected lines while stocks last.</p>
+    <div id="sale-grid" class="grid"></div>
+  </section>
+
+  <!-- Value props -->
+  <section class="section container">
+    <h2 class="heavy center">Why Choose Ahtisham Interiors</h2>
+    <div class="v-grid">
+      <article class="v-card reveal center">
+        <div class="v-icon">🧵</div>
+        <h3 class="heavy">Tailor-Made</h3>
+        <p class="muted">Premium stitching, lining & accessories included.</p>
+      </article>
+      <article class="v-card reveal center">
+        <div class="v-icon">📏</div>
+        <h3 class="heavy">Free Measurement</h3>
+        <p class="muted">On-site measurement so every drape fits perfectly.</p>
+      </article>
+      <article class="v-card reveal center">
+        <div class="v-icon">⚡</div>
+        <h3 class="heavy">Fast Installation</h3>
+        <p class="muted">Quick turnaround with professional fitting.</p>
+      </article>
+      <article class="v-card reveal center">
+        <div class="v-icon">💳</div>
+        <h3 class="heavy">COD / Bank Transfer</h3>
+        <p class="muted">Easy payments with invoice provided.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section container">
+    <h2 class="heavy center">How It Works</h2>
+    <ol class="steps">
+      <li class="s-card reveal center">
+        <span class="s-badge">1</span>
+        <h3 class="heavy">Share Photos & Sizes</h3>
+        <p class="muted">WhatsApp your window photos & rough sizes for a quick quote.</p>
+      </li>
+      <li class="s-card reveal center">
+        <span class="s-badge">2</span>
+        <h3 class="heavy">Pick Fabrics</h3>
+        <p class="muted">Choose from velvet, sheers, blackout, roller & roman blinds.</p>
+      </li>
+      <li class="s-card reveal center">
+        <span class="s-badge">3</span>
+        <h3 class="heavy">Stitch & Install</h3>
+        <p class="muted">We tailor, deliver and install—end-to-end service.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section container">
+    <h2 class="heavy center">What Our Customers Say</h2>
+    <div class="t-wrap">
+      <div class="t-rail" id="t-rail">
+        <div class="t-card">“Their machinist did an excellent job—exactly like my reference photos. Highly recommended!”<div class="t-name">— Zainab</div></div>
+        <div class="t-card">“Measurement & installation were perfect. The blackout curtains improved sleep a lot.”<div class="t-name">— Hussain</div></div>
+        <div class="t-card">“Super quick response on WhatsApp and great pricing for the quality.”<div class="t-name">— Areeba</div></div>
       </div>
     </div>
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=2000" alt="Sofa & upholstery">
-      <div class="caption">
-        <h1>Sofas & Upholstery</h1>
-        <p>Custom stitching & expert fitting by our team.</p>
-        <a class="btn" href="catalog.html#sofa">See Upholstery</a>
+  </section>
+
+  <!-- Recent work -->
+  <section class="section container">
+    <h2 class="heavy center">Recent Work</h2>
+    <div class="gallery">
+      <img class="reveal" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200" alt="">
+      <img class="reveal" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200" alt="">
+      <img class="reveal" src="https://images.unsplash.com/photo-1467043153537-a4f570f0e0c5?w=1200" alt="">
+      <img class="reveal" src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200" alt="">
+      <img class="reveal" src="https://images.unsplash.com/photo-1505692794403-34d4982efd4e?w=1200" alt="">
+      <img class="reveal" src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d5d?w=1200" alt="">
+    </div>
+  </section>
+
+  <!-- Blog preview -->
+  <section class="section container">
+    <h2 class="heavy center">Our Latest Blog Posts</h2>
+    <div id="blog-grid" class="blog-grid"></div>
+    <div class="center" style="margin-top:10px"><a class="btn ghost" href="blog.html">Read the Blog</a></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section container">
+    <div class="cta">
+      <h2 class="heavy">Book a Free Measurement Visit</h2>
+      <p class="muted" style="color:#e2e8f0">Send us room photos & sizes on WhatsApp for a same-day quote.</p>
+      <a class="btn" href="https://wa.me/923135245829?text=Hi%20Ahtisham%20Interiors%2C%20I%27d%20like%20a%20measurement%20visit." target="_blank" rel="noopener">Message on WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container fgrid">
+      <div>
+        <h3 style="margin:0 0 8px;color:#fff">Ahtisham Interiors</h3>
+        <p>Shop # 1056A, Opposite SaveMart, Haidery Chowk, Saidpur Road, Rawalpindi.</p>
+        <p>Phone/WhatsApp: <a href="tel:+923135245829">+92 313 5245829</a></p>
+        <p>Hours: Mon–Sat 10:00–20:00</p>
+      </div>
+      <div>
+        <h4 style="color:#fff">Curtains</h4>
+        <ul>
+          <li><a href="catalog.html#velvet">Velvet Curtains</a></li>
+          <li><a href="catalog.html#sheers">Sheer Curtains</a></li>
+          <li><a href="catalog.html#blackout">Blackout Curtains</a></li>
+          <li><a href="catalog.html#linen">Linen Curtains</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#fff">Blinds</h4>
+        <ul>
+          <li><a href="catalog.html#roller">Roller Blinds</a></li>
+          <li><a href="catalog.html#roman">Roman Blinds</a></li>
+          <li><a href="catalog.html#venetian">Venetian Blinds</a></li>
+          <li><a href="catalog.html#zebra">Zebra Blinds</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#fff">Company</h4>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Pinterest">Pinterest</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="hero-dots" id="hero-dots"></div>
-</section>
+    <div class="copy">© <span id="year"></span> Ahtisham Interiors — All rights reserved.</div>
+  </footer>
 
-<!-- CATEGORIES -->
-<section class="section">
-  <h2>Shop by Category</h2>
-  <div class="cat-grid">
-    <a class="cat" href="catalog.html#curtains">
-      <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200" alt="">
-      <span class="label">Curtains</span>
-    </a>
-    <a class="cat" href="catalog.html#blinds">
-      <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d5d?w=1200" alt="">
-      <span class="label">Blinds</span>
-    </a>
-    <a class="cat" href="catalog.html#blackout">
-      <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=1200" alt="">
-      <span class="label">Blackout</span>
-    </a>
-    <a class="cat" href="catalog.html#sheers">
-      <img src="https://images.unsplash.com/photo-1505692794403-34d4982efd4e?w=1200" alt="">
-      <span class="label">Sheers</span>
-    </a>
-    <a class="cat" href="catalog.html#sofa">
-      <img src="https://images.unsplash.com/photo-1549187774-b4e9b0445b41?w=1200" alt="">
-      <span class="label">Sofas & Upholstery</span>
-    </a>
-    <a class="cat" href="catalog.html#wallpapers">
-      <img src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?w=1200" alt="">
-      <span class="label">Wallpapers</span>
-    </a>
-  </div>
-</section>
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/923135245829?text=Hi%20Ahtisham%20Interiors" class="wa" target="_blank" rel="noopener"
+     style="position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:999px;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:50">
+    <img src="https://static.thenounproject.com/png/1853677-200.png" alt="WhatsApp" style="width:28px;height:28px;filter:invert(1)" />
+  </a>
 
-<!-- FEATURED PRODUCTS -->
-<section class="section">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <h2>Featured Products</h2>
-    <a class="btn alt" href="catalog.html">View All</a>
-  </div>
-  <div id="products-grid" class="grid"></div>
-</section>
+  <!-- Scripts -->
+  <script src="assets/cart.js"></script>
+  <script>
+    // If your cart.js exposes updateCartCount, refresh count on load
+    if (typeof updateCartCount==='function') { document.addEventListener('DOMContentLoaded', updateCartCount); }
 
-<!-- VALUE PROPS -->
-<section class="section">
-  <div class="value-grid">
-    <div class="value"><h3>🧵 Tailor-Made</h3><p>Premium stitching, lining & accessories included.</p></div>
-    <div class="value"><h3>📏 Free Measurement</h3><p>We measure on-site so your curtains fit perfectly.</p></div>
-    <div class="value"><h3>⚡ Fast Installation</h3><p>Quick turnaround with professional fitting.</p></div>
-    <div class="value"><h3>💳 COD / Bank Transfer</h3><p>Easy payments, receipt provided.</p></div>
-  </div>
-</section>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<!-- HOW IT WORKS -->
-<section class="section">
-  <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step"><h3>1) Share Photos & Sizes</h3><p>WhatsApp us your window photos & rough sizes for a quick quote.</p></div>
-    <div class="step"><h3>2) Pick Fabrics</h3><p>Choose from velvet, sheers, blackout, roman blinds & more.</p></div>
-    <div class="step"><h3>3) Stitch & Install</h3><p>We tailor, deliver and install—end to end.</p></div>
-  </div>
-</section>
+    // Load products (featured + sale)
+    fetch('data/products.json').then(r=>r.json()).then(products=>{
+      // Featured (first 8)
+      const feat = products.slice(0,8);
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = feat.map(p => cardHTML(p)).join('');
 
-<!-- TESTIMONIALS -->
-<section class="section">
-  <h2>What Our Customers Say</h2>
-  <div class="t-wrap">
-    <div class="t-rail" id="t-rail">
-      <div class="t-card">“Their machinist did an excellent job—same as my reference photos. Highly recommended!”<div class="t-name">— Zainab</div></div>
-      <div class="t-card">“Measurement & installation were perfect. The blackout curtains improved sleep a lot.”<div class="t-name">— Hussain</div></div>
-      <div class="t-card">“Super quick response on WhatsApp and great price for the quality.”<div class="t-name">— Areeba</div></div>
-    </div>
-  </div>
-</section>
+      // Sale only
+      const sales = products.filter(p => p.on_sale || p.sale_price);
+      const saleGrid = document.getElementById('sale-grid');
+      saleGrid.innerHTML = sales.slice(0,8).map(p => cardHTML(p)).join('');
 
-<!-- BEFORE / AFTER GALLERY -->
-<section class="section">
-  <h2>Recent Work</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200" alt="">
-    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200" alt="">
-    <img src="https://images.unsplash.com/photo-1467043153537-a4f570f0e0c5?w=1200" alt="">
-    <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=1200" alt="">
-    <img src="https://images.unsplash.com/photo-1505692794403-34d4982efd4e?w=1200" alt="">
-    <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d5d?w=1200" alt="">
-  </div>
-</section>
+      // Hook up add-to-cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(btn=>{
+        btn.addEventListener('click', e=>{
+          const card = e.target.closest('.product');
+          const item = {
+            id: card.dataset.id,
+            name: card.dataset.name,
+            price: Number(card.dataset.sale || card.dataset.price),
+            qty: 1,
+            image: card.querySelector('img').src
+          };
+          if (typeof addToCart==='function') addToCart(item);
+          if (typeof updateCartCount==='function') updateCartCount();
+          e.target.textContent = 'Added ✓';
+          setTimeout(()=>e.target.textContent='Add',900);
+        });
+      });
+    });
 
-<!-- FAQ -->
-<section class="section">
-  <h2>FAQ</h2>
-  <div class="faq">
-    <details><summary>Do you measure at home?</summary><p>Yes—free measurement visit in Rawalpindi & Islamabad.</p></details>
-    <details><summary>How long does stitching & fitting take?</summary><p>Typically 3–5 working days depending on fabric selection.</p></details>
-    <details><summary>Do you offer COD?</summary><p>Yes, cash on delivery or bank transfer—your choice.</p></details>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section">
-  <div class="cta">
-    <h2>Book a Free Measurement Visit</h2>
-    <p class="muted" style="color:#e2e8f0">Send us room photos & sizes on WhatsApp for a same-day quote.</p>
-    <a class="btn" href="https://wa.me/923135245829?text=Hi%20Ahtisham%20Interiors%2C%20I%27d%20like%20a%20measurement%20visit." target="_blank" rel="noopener">Message on WhatsApp</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="fgrid">
-    <div>
-      <h3 style="margin:0 0 8px;color:#fff">Ahtisham Interiors</h3>
-      <p>Shop # 1056A, Opp. SaveMart, Haidery Chowk, Saidpur Road, Rawalpindi</p>
-      <p>Phone/WhatsApp: <a href="tel:+923135245829">+92 313 5245829</a></p>
-      <p>Hours: Mon–Sat 10:00–20:00</p>
-    </div>
-    <div>
-      <h4 style="color:#fff">Curtains</h4>
-      <ul>
-        <li><a href="catalog.html#velvet">Velvet Curtains</a></li>
-        <li><a href="catalog.html#sheers">Sheer Curtains</a></li>
-        <li><a href="catalog.html#blackout">Blackout Curtains</a></li>
-        <li><a href="catalog.html#linen">Linen Curtains</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 style="color:#fff">Blinds</h4>
-      <ul>
-        <li><a href="catalog.html#roller">Roller Blinds</a></li>
-        <li><a href="catalog.html#roman">Roman Blinds</a></li>
-        <li><a href="catalog.html#venetian">Venetian Blinds</a></li>
-        <li><a href="catalog.html#zebra">Zebra Blinds</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 style="color:#fff">Company</h4>
-      <ul>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div style="display:flex;gap:8px;margin-top:8px">
-        <a href="#" aria-label="Facebook">Facebook</a>
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="Pinterest">Pinterest</a>
-      </div>
-    </div>
-  </div>
-  <div class="copy">© <span id="year"></span> Ahtisham Interiors — All rights reserved.</div>
-</footer>
-
-<!-- WhatsApp floating -->
-<a class="wa" href="https://wa.me/923135245829?text=Hi%20Ahtisham%20Interiors" target="_blank" rel="noopener">
-  <img src="https://static.thenounproject.com/png/1853677-200.png" alt="WhatsApp">
-</a>
-
-<!-- Scripts -->
-<script src="assets/cart.js"></script>
-<script>
-  // Update cart count
-  if(typeof updateCartCount==='function'){document.addEventListener('DOMContentLoaded',updateCartCount);}
-
-  // Render featured products from data/products.json
-  fetch('data/products.json').then(r=>r.json()).then(products=>{
-    const grid=document.getElementById('products-grid');
-    grid.innerHTML = products.slice(0,8).map(p=>{
-      const price = p.sale_price ? 
-        `<span class="price">PKR ${p.sale_price.toLocaleString()}</span><span class="old">PKR ${p.price.toLocaleString()}</span>` :
-        `<span class="price">PKR ${p.price.toLocaleString()}</span>`;
+    function cardHTML(p){
+      const price = p.sale_price
+        ? `<span class="price">PKR ${p.sale_price.toLocaleString()}</span><span class="old">PKR ${p.price.toLocaleString()}</span>`
+        : `<span class="price">PKR ${p.price.toLocaleString()}</span>`;
       return `
       <div class="card product" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" ${p.sale_price?`data-sale="${p.sale_price}"`:''}>
         <div style="position:relative">
           <img src="${p.image}" alt="${p.name}">
           ${p.on_sale||p.sale_price?'<span class="sale">Sale!</span>':''}
         </div>
-        <div class="content">
-          <strong>${p.name}</strong>
+        <div class="content center">
+          <strong class="heavy" style="display:block">${p.name}</strong>
           <div>${price}</div>
-          <div style="display:flex;gap:8px;margin-top:auto">
-            <a class="btn alt" href="product.html#${p.id}">Select options</a>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+            <a class="btn ghost" href="product.html#${p.id}">Select options</a>
             <button class="btn add-to-cart">Add</button>
           </div>
         </div>
       </div>`;
-    }).join('');
-  });
+    }
 
-  // HERO slider
-  const slides = document.getElementById('slides');
-  const dots = document.getElementById('hero-dots');
-  const total = slides.children.length;
-  let i=0, touchX=null;
-  function go(n){
-    i=(n+total)%total;
-    slides.style.transform=`translateX(-${i*100}vw)`;
-    dots.querySelectorAll('button').forEach((b,idx)=>b.classList.toggle('active',idx===i));
-  }
-  for(let k=0;k<total;k++){
-    const b=document.createElement('button');
-    b.onclick=()=>go(k);
-    if(k===0) b.classList.add('active');
-    dots.appendChild(b);
-  }
-  setInterval(()=>go(i+1), 5000);
-  slides.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});
-  slides.addEventListener('touchend',e=>{
-    if(touchX===null) return;
-    const dx=e.changedTouches[0].clientX - touchX;
-    if(Math.abs(dx)>40) go(i + (dx<0?1:-1));
-    touchX=null;
-  });
+    // Hero slider
+    const slides = document.getElementById('slides');
+    const dots = document.getElementById('hero-dots');
+    const total = slides.children.length;
+    let slideIndex = 0, touchX = null;
 
-  // Testimonials auto-scroll
-  const rail=document.getElementById('t-rail');
-  let tpos=0;
-  setInterval(()=>{
-    tpos = (tpos+1)%rail.children.length;
-    rail.style.transform=`translateX(-${tpos*(rail.children[0].offsetWidth+14)}px)`;
-  }, 3500);
+    for(let k=0;k<total;k++){
+      const b=document.createElement('button');
+      b.onclick=()=>go(k);
+      if(k===0) b.classList.add('active');
+      dots.appendChild(b);
+    }
+    function go(n){
+      slideIndex=(n+total)%total;
+      slides.style.transform=`translateX(-${slideIndex*100}vw)`;
+      dots.querySelectorAll('button').forEach((b,idx)=>b.classList.toggle('active',idx===slideIndex));
+    }
+    setInterval(()=>go(slideIndex+1), 5000);
+    slides.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});
+    slides.addEventListener('touchend',e=>{
+      if(touchX===null) return;
+      const dx=e.changedTouches[0].clientX - touchX;
+      if(Math.abs(dx)>40) go(slideIndex + (dx<0?1:-1));
+      touchX=null;
+    });
 
-  // Footer year
-  document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+    // Testimonials auto-scroll
+    const rail=document.getElementById('t-rail');
+    let tpos=0;
+    setInterval(()=>{
+      if(!rail) return;
+      tpos = (tpos+1)%rail.children.length;
+      rail.style.transform=`translateX(-${tpos*(rail.children[0].offsetWidth+14)}px)`;
+    }, 3500);
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
