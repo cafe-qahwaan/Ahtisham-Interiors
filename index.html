@@ -1,53 +1,271 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ahtisham Interiors</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ahtisham Interiors — Curtains, Blinds & Upholstery in Rawalpindi</title>
+  <meta name="description" content="Made-to-measure curtains & blinds. Expert measuring, stitching and installation in Rawalpindi. WhatsApp for a quick quote.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Base site styles you already have -->
   <link rel="stylesheet" href="assets/site.css">
+
+  <!-- Home-only polish -->
+  <style>
+    :root{
+      /* Modern neutral + accent palette */
+      --bg:#ffffff;
+      --paper:#f8fafc;
+      --ink:#0b1220;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#f59e0b;         /* warm amber accent */
+      --accent-700:#b45309;      /* darker for hover */
+      --brand:#0ea5a3;           /* teal for CTAs/pills */
+      --brand-700:#0b7c7a;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(3,7,18,.07);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);}
+
+    /* Header / Nav */
+    .topbar{background:var(--paper);border-bottom:1px solid var(--line);}
+    .topbar .inner{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand__logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#0ea5a3,#14b8a6)}
+    .brand__name{font-weight:700;letter-spacing:.2px}
+    .nav{display:flex;gap:18px;align-items:center}
+    .nav a{color:#1f2937;text-decoration:none;font-weight:600}
+    .nav a:hover{color:var(--brand)}
+    .hamburger{display:none;border:1px solid var(--line);padding:8px 10px;border-radius:10px;background:#fff}
+
+    /* Amber stripe (like your reference) */
+    .menubar{background:var(--accent);color:#fff}
+    .menubar .inner{max-width:1180px;margin:0 auto;padding:10px 16px;display:flex;gap:18px;align-items:center;overflow:auto}
+    .menubar a{color:#fff;text-decoration:none;font-weight:600;opacity:.92}
+    .menubar a:hover{opacity:1;text-decoration:underline}
+
+    /* Hero slider */
+    .hero{position:relative;border-bottom:1px solid var(--line)}
+    .hero__frame{max-width:1180px;margin:0 auto;padding:0 16px}
+    .slides{position:relative;height:50svh;min-height:420px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .slide{position:absolute;inset:0;background:#000;opacity:0;transition:opacity .6s ease}
+    .slide[data-active="true"]{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.68)}
+    .slide__copy{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:0 18px}
+    .slide__copy h1{font-size:clamp(28px,5vw,46px);line-height:1.08;margin:0 0 10px}
+    .slide__copy p{max-width:70ch;margin:0 auto 18px;color:#e5e7eb}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid transparent;font-weight:700;text-decoration:none;cursor:pointer}
+    .btn--brand{background:var(--brand);color:#fff}
+    .btn--brand:hover{background:var(--brand-700)}
+    .btn--ghost{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.35)}
+    .btn--ghost:hover{background:rgba(255,255,255,.2)}
+    .hero__dots{position:absolute;left:50%;bottom:14px;translate:-50% 0;display:flex;gap:8px}
+    .dot{width:9px;height:9px;border-radius:999px;background:rgba(255,255,255,.55)}
+    .dot[data-active="true"]{background:#fff}
+
+    /* Section shell */
+    .section{max-width:1180px;margin:0 auto;padding:28px 16px}
+    .section h2{font-size:clamp(22px,3.6vw,30px);margin:0 0 14px}
+
+    /* Category tiles */
+    .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .cat{position:relative;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#000}
+    .cat img{width:100%;height:160px;object-fit:cover;opacity:.82;transition:transform .4s}
+    .cat:hover img{transform:scale(1.04)}
+    .cat__label{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;padding:8px 12px;border-radius:999px;font-weight:700}
+
+    /* Featured products */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+    .card__media{position:relative}
+    .card__media img{width:100%;height:220px;object-fit:cover}
+    .badge{position:absolute;left:12px;top:12px;background:#10b981;color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}
+    .card__body{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+    .price{font-weight:800}
+    .old{color:#9ca3af;text-decoration:line-through;margin-left:10px}
+    .cta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .button{background:var(--ink);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;text-decoration:none}
+    .button:hover{background:#111827}
+    .button--alt{background:var(--brand)}
+    .button--alt:hover{background:var(--brand-700)}
+    @media(min-width:720px){.card{grid-column:span 4}}
+
+    /* Service badges */
+    .usps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+    .usp{border:1px dashed var(--line);border-radius:16px;padding:14px;background:var(--paper)}
+    .usp strong{display:block;margin-bottom:6px}
+
+    /* How it works */
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .step{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+    .step span{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;margin-bottom:8px}
+
+    /* Testimonials slider (simple) */
+    .twrap{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+    .titem{display:none;padding:22px}
+    .titem[data-active="true"]{display:block}
+    .titem blockquote{margin:0;font-size:18px;line-height:1.5}
+    .titem footer{margin-top:10px;color:var(--muted);font-weight:600}
+    .tcontrols{position:absolute;right:12px;bottom:12px;display:flex;gap:8px}
+    .tbtn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:6px 10px;cursor:pointer}
+
+    /* Blog cards */
+    .blog{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .b{border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+    .b img{width:100%;height:160px;object-fit:cover}
+    .b .content{padding:12px}
+    .b h3{margin:0 0 6px}
+
+    /* CTA band */
+    .band{background:linear-gradient(135deg,#0ea5a3,#14b8a6);color:#fff;border-radius:16px;padding:22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;box-shadow:var(--shadow)}
+    .band h3{margin:0}
+    .band a{background:#fff;color:#0b7c7a;border-radius:999px;padding:10px 14px;font-weight:800;text-decoration:none}
+    .band a:hover{opacity:.9}
+
+    /* Footer */
+    .footer{background:var(--paper);border-top:1px solid var(--line);margin-top:30px}
+    .footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .footer h4{margin:0 0 8px}
+    .footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+    .made{display:flex;justify-content:space-between;align-items:center;color:var(--muted);padding:16px 0;border-top:1px solid var(--line);margin-top:14px}
+
+    /* WhatsApp float */
+    .wa{position:fixed;right:16px;bottom:16px;width:58px;height:58px;border-radius:999px;background:#25d366;display:grid;place-items:center;color:#fff;font-size:26px;text-decoration:none;box-shadow:var(--shadow);z-index:50}
+
+    /* Mobile nav */
+    @media (max-width:880px){
+      .nav{display:none}
+      .nav[data-open="true"]{display:flex;position:absolute;inset:64px 16px auto 16px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px;flex-direction:column}
+      .hamburger{display:block}
+      .menubar{display:none}
+    }
+  </style>
 </head>
 <body>
-<header class="header">
-  <nav class="navbar">
-    <div class="inner container">
-      <a href="index.html" class="brand">Ahtisham Interiors</a>
-      <div>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <div class="brand__logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand__name">Ahtisham Interiors</div>
+          <small style="color:var(--muted)">Curtains • Blinds • Upholstery</small>
+        </div>
+      </a>
+      <nav class="nav" id="nav">
         <a href="catalog.html">Catalog</a>
-        <a href="blog.html">Blog</a>
         <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart</a>
-      </div>
+        <a class="btn btn--brand" href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+      </nav>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
-  </nav>
-</header>
-<section class="hero">
-  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200" alt="Curtains">
-  <h1>Elegant Curtains & Blinds for Every Room</h1>
-</section>
-<main class="container" style="padding:24px 0;">
-  <h2>Featured Products</h2>
-  <div id="products-grid" class="grid"></div>
-  <h2 style="margin-top:40px">Latest Blog Posts</h2>
-  <div id="blog-grid" class="grid"></div>
-</main>
-<footer class="footer">
-  <div class="inner container">
-    <div>
-      <h4>Curtains</h4>
-      <ul><li>Velvet</li><li>Sheer</li><li>Blackout</li></ul>
-    </div>
-    <div>
-      <h4>Blinds</h4>
-      <ul><li>Roman</li><li>Roller</li></ul>
-    </div>
-    <div>
-      <h4>About Us</h4>
-      <p>Shop #1056A, Opp. SaveMart, Haidery Chowk, Saidpur Road, Rawalpindi</p>
+  </header>
+
+  <!-- Amber strip like the reference -->
+  <div class="menubar">
+    <div class="inner">
+      <a href="catalog.html#curtains">Curtains</a>
+      <a href="catalog.html#blinds">Blinds</a>
+      <a href="catalog.html#wallpapers">Wallpapers</a>
+      <a href="catalog.html#sofas">Sofa & Upholstery</a>
+      <a href="contact.html">Book Measurement</a>
+      <a href="tel:+923135245829">Call: +92 313 5245829</a>
     </div>
   </div>
-</footer>
-<a href="https://wa.me/923135245829" class="wa-float">💬</a>
-<script src="assets/main.js"></script>
-<script src="assets/cart.js"></script>
-</body>
-</html>
+
+  <!-- HERO: slider -->
+  <section class="hero">
+    <div class="hero__frame">
+      <div class="slides" id="slides">
+        <div class="slide" data-active="true">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800" alt="">
+          <div class="slide__copy">
+            <div>
+              <h1>Elegant Curtains & Blinds for Every Room</h1>
+              <p>Made-to-measure fabrics, expert stitching and fast installation across Rawalpindi.</p>
+              <div>
+                <a class="btn btn--brand" href="catalog.html">Browse Catalog</a>
+                <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://wa.me/923135245829?text=Hi%20Ahtisham%20Interiors,%20I%27d%20like%20a%20quote.">WhatsApp Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1800" alt="">
+          <div class="slide__copy">
+            <div>
+              <h1>Blackout, Sheers, Roman & Roller Blinds</h1>
+              <p>From airy sheers to full blackout—get the exact light control your space needs.</p>
+              <div>
+                <a class="btn btn--brand" href="catalog.html#blinds">Shop Blinds</a>
+                <a class="btn btn--ghost" href="projects.html">View Projects</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1595516116314-6f1a6f0b67f7?w=1800" alt="">
+          <div class="slide__copy">
+            <div>
+              <h1>Measured by Us, Chosen by You</h1>
+              <p>Send window photos & measurements on WhatsApp for a quick estimate.</p>
+              <div>
+                <a class="btn btn--brand" href="contact.html">Book a Visit</a>
+                <a class="btn btn--ghost" href="tel:+923135245829">Call Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero__dots" id="heroDots">
+          <span class="dot" data-active="true"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <h2>Shop by Category</h2>
+    <div class="cats">
+      <a class="cat" href="catalog.html#curtains"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d5d?w=1200" alt=""><span class="cat__label">Curtains</span></a>
+      <a class="cat" href="catalog.html#blinds"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?w=1200" alt=""><span class="cat__label">Blinds</span></a>
+      <a class="cat" href="catalog.html#blackout"><img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=1200" alt=""><span class="cat__label">Blackout</span></a>
+      <a class="cat" href="catalog.html#sheers"><img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=1200" alt=""><span class="cat__label">Sheers</span></a>
+      <a class="cat" href="catalog.html#sofas"><img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=1200" alt=""><span class="cat__label">Sofas & Upholstery</span></a>
+      <a class="cat" href="catalog.html#wallpapers"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200" alt=""><span class="cat__label">Wallpapers</span></a>
+    </div>
+  </section>
+
+  <!-- Featured products (from data/products.json) -->
+  <section class="section">
+    <h2>Featured Products</h2>
+    <div class="grid" id="featuredGrid" aria-live="polite"></div>
+  </section>
+
+  <!-- Services / USPs -->
+  <section class="section">
+    <div class="usps">
+      <div class="usp"><strong>📏 Free Measurement</strong><small>We measure on-site so your curtains fit perfectly.</small></div>
+      <div class="usp"><strong>🧵 Tailor-Made</strong><small>Premium stitching, lining and accessories included.</small></div>
+      <div class="usp"><strong>⚡ Fast Installation</strong><small>Quick turnaround with professional fitting.</small></div>
+      <div class="usp"><strong>💵 COD & Bank Transfer</strong><small>Easy payments, full invoice provided.</small></div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><span>1</span><strong>Share Photos & Sizes</strong><p>WhatsApp us your windows and rough measurements.</p></div>
+      <div class="step"><span>2</span><strong>Pick Fabrics</strong><p>Choose from sheers, blackout, velvet and more.</p></div>
+      <div class="step"><span>3</span><strong>Stitch & Install</strong><p>We tailor, deliver and install—end to end.</
