@@ -1,0 +1,30 @@
+[
+  {
+    "id": "velvet-blue",
+    "name": "Velvet Curtain \u2013 Blue",
+    "price": 8999,
+    "old_price": 10999,
+    "sale": true,
+    "image": "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800"
+  },
+  {
+    "id": "sheer-white",
+    "name": "Sheer Curtain \u2013 White",
+    "price": 4999,
+    "old_price": 5999,
+    "sale": true,
+    "image": "https://images.unsplash.com/photo-1505692794403-34d4982efd4e?w=800"
+  },
+  {
+    "id": "blackout-grey",
+    "name": "Blackout Curtain \u2013 Grey",
+    "price": 10499,
+    "image": "https://images.unsplash.com/photo-1493666438817-866a91353ca9?w=800"
+  },
+  {
+    "id": "roman-linen",
+    "name": "Roman Blind \u2013 Linen",
+    "price": 11999,
+    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800"
+  }
+]
